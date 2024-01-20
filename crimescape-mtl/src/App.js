@@ -38,8 +38,8 @@ function App() {
             <option value="breaking-and-entering">Breaking and Entering</option>
             <option value="armed-robbery">Armed Robbery</option>
           </select>
-          <input type="date" name="start-date" onChange={onChangeEvent} ref={start_date} />
-          <input type="date" name="end-date" onChange={onChangeEvent} ref={end_date} />
+          <input type="date" name="start-date" onChange={onChangeEvent} ref={start_date} min="2015-01-01" max="2024-01-17"/>
+          <input type="date" name="end-date" onChange={onChangeEvent} ref={end_date} min="2015-01-01" max="2024-01-17"/>
           <select name="time-of-day" onChange={onChangeEvent} ref={time_of_day}>
             <option value="day">Day</option>
             <option value="evening">Evening</option>
