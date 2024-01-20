@@ -1,5 +1,8 @@
 {
   "dependencies": {
     "react-select": "^5.8.0"
+  },
+  "devDependencies": {
+    "tailwindcss": "^3.4.1"
   }
 }
