@@ -14,20 +14,22 @@ function Map({ body }) {
           console.log('fetch backend')
 
           // Request Data from backend
-          // const response = await fetch('http://127.0.0.1:1234/crime-data', {
-          //   method: 'POST',
-          //   headers: {
-          //     'Content-Type': 'application/json'
-          //   },
-          //   body: JSON.stringify({body);
+          const response = await fetch('http://127.0.0.1:5000/generate', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({body})
+          });
 
-          // if (!response.ok) {
-          //   throw new Error(`HTTP error, status: ${response.status}`);
-          // }
+          if (!response.ok) {
+            throw (`HTTP error, status: ${response.status}`);
+          }
 
-          // let mapData = await response.json();
+          let mapData = await response.json();
 
-          //setMapData(mapData);
+          setMapData(mapData);
+
           // Handle Response
         }
         else {
@@ -71,12 +73,12 @@ function Map({ body }) {
     <div>
       {error ?
         <p>{error}</p>
-        : 
+        :
         <p></p>
       }
-    { 
-    // Display Map here
-    }
+      {
+        // Display Map here
+      }
     </div>
   );
 }
