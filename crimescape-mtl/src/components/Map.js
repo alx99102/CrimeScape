@@ -15,18 +15,21 @@ function Map({ body }) {
 
           // Request Data from backend
           const response = await fetch('http://127.0.0.1:5000/generate', {
-            method: 'POST',
+            mode: 'no-cors',
+            method: 'POST', 
             headers: {
-              'Content-Type': 'application/json'
+              'Content-Type': 'application/json',
+              'Access-Control-Allow-Origin': '*',
+              'Access-Control-Allow-Header': 'Origin, X-Requested-With, Content-Type, Accept'
             },
             body: JSON.stringify({body})
           });
 
-          if (!response.ok) {
-            throw (`HTTP error, status: ${response.status}`);
-          }
+          // if (!response.ok) {
+          //   throw (`HTTP error, status: ${response.status}`);
+          // }
 
-          let mapData = await response.json();
+          // let mapData = await response.json();
 
           setMapData(mapData);
 

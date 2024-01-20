@@ -3,10 +3,10 @@ import flask
 import prediction
 import heatmap
 import db
-
+from flask_cors import CORS
 
 app = flask.Flask(__name__)
-
+CORS(app)
 """
 
 expected body:
