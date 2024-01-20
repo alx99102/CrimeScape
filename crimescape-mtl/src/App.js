@@ -10,13 +10,17 @@ function App() {
   return (
     <div className="App">
       <Header />
-      <SelectionBar />
       <div className="main-content">
+      <div className='control-container'>
+        <SelectionBar />
         <ControlPanel />
+      </div>
         <div className="map-insights-container">
-          <Map />
           <Insights />
         </div>
+          <div className='map-container'>
+            <Map />
+          </div>
       </div>
     </div>
   );

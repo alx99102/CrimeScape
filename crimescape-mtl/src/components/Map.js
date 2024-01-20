@@ -1,8 +1,9 @@
 import React from 'react';
 
 const Map = () => (
-  <div className="map-container">
-    {/* Map implementation */}
+  <div className="bg-orange-300">
+    {}
+    map
   </div>
 );
 
