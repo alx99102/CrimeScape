@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-
+import axios from 'axios';
 
 function Map({ body }) {
   // Pretend parameters are set from frontend
@@ -14,16 +14,17 @@ function Map({ body }) {
           console.log('fetch backend')
 
           // Request Data from backend
-          const response = await fetch('http://127.0.0.1:5000/generate', {
-            mode: 'no-cors',
-            method: 'POST', 
-            headers: {
-              'Content-Type': 'application/json',
-              'Access-Control-Allow-Origin': '*',
-              'Access-Control-Allow-Header': 'Origin, X-Requested-With, Content-Type, Accept'
-            },
-            body: JSON.stringify({body})
-          });
+          // const response = await fetch('http://127.0.0.1:5000/generate', {    
+          //   headers: {
+          //     'Content-Type': 'application/json',
+          //   },  
+          //   mode: 'no-cors',     
+          //   method: 'POST', 
+          //   body: JSON.stringify({body})
+          // });
+
+          const response = await axios.post('http://127.0.0.1:5000/generate', body)
+          
 
           // if (!response.ok) {
           //   throw (`HTTP error, status: ${response.status}`);
