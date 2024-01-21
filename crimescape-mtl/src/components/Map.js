@@ -9,6 +9,13 @@ function Map({ body }) {
   const [componentKey, setComponentKey] = useState(0)
   const [responseData, setResponseData] = useState({ responseData: [[]] });
 
+  const { isLoaded, loadError } = useLoadScript({
+    googleMapsApiKey: process.env.REACT_APP_GOOGLE_MAPS_API_KEY,
+    libraries,
+  });
+
+
+
   useEffect(() => {
     async function apiCall() {
       try {
@@ -59,6 +66,23 @@ function Map({ body }) {
   useEffect(() => {
     console.log(body);
   }, [body]);
+
+  const libraries = ['visualization'];
+  const mapContainerStyle = {
+    width: '100vw',
+    height: '100vh',
+  };
+  const center = {
+    lat: 45.5126, //center latitude
+    lng: -73.6802, //center longitude
+  };
+  
+  const heatMapOptions = {
+      radius: 20,
+      opacity: 0.5,
+      };
+  const heatMapData = coordinatesArray.map((coordinate) => new window.google.maps.LatLng(coordinate[0], coordinate[1]));
+
   return (
     <div>
       {error ?
@@ -67,8 +91,12 @@ function Map({ body }) {
         <p></p>
       }
       {
-        // Display Map here
-        <MapVisual coordinatesArray={responseData}/>
+      <GoogleMap
+      mapContainerStyle={mapContainerStyle}
+      zoom={11}
+      center={center}>
+      <HeatmapLayerF data={heatMapData} options={heatMapOptions} />    
+    </GoogleMap>
       }
     </div>
   );
