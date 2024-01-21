@@ -1,11 +1,13 @@
 import { useEffect, useState } from "react";
 import axios from 'axios';
+import MapVisual from "./MapVisual";
 
 function Map({ body }) {
   // Pretend parameters are set from frontend
   const [mapData, setMapData] = useState({ mapData: [] });
   const [error, setError] = useState(0);
   const [componentKey, setComponentKey] = useState(0)
+  const [responseData, setResponseData] = useState({ responseData: [[]] });
 
   useEffect(() => {
     async function apiCall() {
@@ -13,28 +15,12 @@ function Map({ body }) {
         if (isValidBody()) {
           console.log('fetch backend')
 
-          // Request Data from backend
-          // const response = await fetch('http://127.0.0.1:5000/generate', {    
-          //   headers: {
-          //     'Content-Type': 'application/json',
-          //   },  
-          //   mode: 'no-cors',     
-          //   method: 'POST', 
-          //   body: JSON.stringify({body})
-          // });
-
           const response = await axios.post('http://127.0.0.1:5000/generate', body)
           
 
-          // if (!response.ok) {
-          //   throw (`HTTP error, status: ${response.status}`);
-          // }
-
-          // let mapData = await response.json();
-
-          setMapData(mapData);
-
           // Handle Response
+          setResponseData(response.data);
+
         }
         else {
           throw ("Please enter start and end dates, make sure start date is before end date.");
@@ -82,6 +68,7 @@ function Map({ body }) {
       }
       {
         // Display Map here
+        <MapVisual coordinatesArray={responseData}/>
       }
     </div>
   );

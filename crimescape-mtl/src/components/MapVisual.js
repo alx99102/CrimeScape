@@ -16,7 +16,7 @@ const heatMapOptions = {
     opacity: 0.5,
     };
 
-const Maptest = () => {
+const MapVisual = (coordinatesArray) => {
   const { isLoaded, loadError } = useLoadScript({
     googleMapsApiKey: process.env.REACT_APP_GOOGLE_MAPS_API_KEY,
     libraries,
@@ -36,6 +36,15 @@ const Maptest = () => {
     { location: new window.google.maps.LatLng(45.5122, -73.6802), weight: 1 },
     ];
 
+    console.log(coordinatesArray);
+
+  //map 2d array of coordinates into heapmapdata location points
+  // const heatMapData = coordinatesArray.map((coordinate) => {
+  //   return { location: new window.google.maps.LatLng(coordinate[0], coordinate[1]), weight: 1 }
+  // }
+  // );
+
+    console.log(coordinatesArray);
   return (
     <div>
       <GoogleMap
@@ -48,4 +57,4 @@ const Maptest = () => {
   );
 };
 
-export default Maptest;
+export default MapVisual;

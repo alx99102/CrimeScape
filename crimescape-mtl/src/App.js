@@ -5,7 +5,7 @@ import Map from './components/Map';
 import Insights from './components/Insights';
 import './App.css';
 import { useRef, useState } from 'react';
-import Maptest from './components/Maptest';
+import MapVisual from './components/MapVisual';
 
 function App() {
   
@@ -49,7 +49,7 @@ function App() {
         </div>
         <div className="map-insights-container">
           <Map key={componentKey} body={currentBody} />
-          <Maptest />
+          <MapVisual />
           <Insights />
         </div>
       </div>
