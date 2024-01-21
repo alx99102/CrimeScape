@@ -3,6 +3,7 @@ import flask
 import prediction
 import heatmap
 import db
+import insights
 from flask_cors import CORS
 
 app = flask.Flask(__name__)
@@ -58,6 +59,10 @@ def generate():
     else:
         data = db.find(body['type'], body['start_date'], body['end_date'], body['time_of_day'])
         return heatmap.get_heatmap_data(data), 200
-    
+
+@app.route('/insights', methods=['GET'])
+def facts():
+    analysis = insights.crimeByTime()
+    return analysis, 200
 if __name__ == '__main__':
     app.run(debug=True)
