@@ -52,9 +52,8 @@ def generate():
             body["time_of_day"] = "nuit"
 
     
-    if body['is_prediction'] is True:
-        pred_date = prediction.get_prediction(body['type'], body['start date'], body['time_of_day'])
-        return heatmap.get_heatmap_data(pred_date), 200
+    if body['is_prediction'] == True:
+        return prediction.get_prediction(body['type'], body['start_date'], body['end_date'], body['time_of_day'])
 
     else:
         data = db.find(body['type'], body['start_date'], body['end_date'], body['time_of_day'])
