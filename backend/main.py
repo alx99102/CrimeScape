@@ -62,7 +62,11 @@ def generate():
 
 @app.route('/insights', methods=['GET'])
 def facts():
-    analysis = insights.crimeByTime()
+    analysis = {
+        "crimeByTimeOfDay": insights.crimeByTime(),
+    
+        "topCrimeInYear" : insights.topCrimeInYear()
+    }
     return analysis, 200
 if __name__ == '__main__':
     app.run(debug=True)

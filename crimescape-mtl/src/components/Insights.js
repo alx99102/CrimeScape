@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 const Insights = () => {
-  const [responseData, setResponseData] = useState({ message:"" });
+  const [responseData, setResponseData] = useState({ crimeByTimeOfDay:"",  topCrimeInYear:""});
   // Get Insights from backend
   useEffect(() => { getInsights(); }, []);
 
@@ -16,7 +16,10 @@ const Insights = () => {
     <div className="insights-container">
       <h2>Insights</h2>
       <div className='bg-teal-700'>
-        <p>{responseData.message}</p>
+
+        <p>{responseData.crimeByTimeOfDay}</p>
+
+        <p>{responseData.topCrimeInYear}</p>
       </div>
     </div>
   )
