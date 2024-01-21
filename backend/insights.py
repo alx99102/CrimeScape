@@ -121,4 +121,4 @@ def crimeBySeason():
 
     seasonAverage = seasonAverage / 8
 
-    return "There is an average of {0:.0f} crimes committed throughout the {1}.".format(seasonAverage, season_name)
+    return "There is an average of {0:.0f} reported crimes committed throughout the {1}.".format(seasonAverage, season_name)
