@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-
+import axios from 'axios';
 
 function Map({ body }) {
   // Pretend parameters are set from frontend
@@ -14,20 +14,26 @@ function Map({ body }) {
           console.log('fetch backend')
 
           // Request Data from backend
-          // const response = await fetch('http://127.0.0.1:1234/crime-data', {
-          //   method: 'POST',
+          // const response = await fetch('http://127.0.0.1:5000/generate', {    
           //   headers: {
-          //     'Content-Type': 'application/json'
-          //   },
-          //   body: JSON.stringify({body);
+          //     'Content-Type': 'application/json',
+          //   },  
+          //   mode: 'no-cors',     
+          //   method: 'POST', 
+          //   body: JSON.stringify({body})
+          // });
+
+          const response = await axios.post('http://127.0.0.1:5000/generate', body)
+          
 
           // if (!response.ok) {
-          //   throw new Error(`HTTP error, status: ${response.status}`);
+          //   throw (`HTTP error, status: ${response.status}`);
           // }
 
           // let mapData = await response.json();
 
-          //setMapData(mapData);
+          setMapData(mapData);
+
           // Handle Response
         }
         else {
@@ -55,7 +61,7 @@ function Map({ body }) {
 
   function dateToUnix(date) {
     if (date != "" || date != null || date != undefined || new Date(date) != "Invalid Date") {
-      return Math.floor(new Date(date).getTime());
+      return Math.floor(new Date(date).getTime()/1000);
     }
     return false;
   }
@@ -71,12 +77,12 @@ function Map({ body }) {
     <div>
       {error ?
         <p>{error}</p>
-        : 
+        :
         <p></p>
       }
-    { 
-    // Display Map here
-    }
+      {
+        // Display Map here
+      }
     </div>
   );
 }
