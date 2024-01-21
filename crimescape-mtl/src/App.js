@@ -1,6 +1,5 @@
-import React, { useRef, useState, useEffect } from 'react';
+import React, { useRef, useState } from 'react';
 import Header from './components/Header';
-import SelectionBar from './components/SelectionBar';
 import Map from './components/Map';
 import Insights from './components/Insights';
 import './App.css'; // Ensure this file includes the CSS for Header and SelectionBar, if necessary
