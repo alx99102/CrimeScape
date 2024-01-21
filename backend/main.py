@@ -24,7 +24,6 @@ expected body:
 @app.route('/generate', methods=['POST'])
 def generate():
     body = flask.request.get_json()
-    print(body)
     if body is None:
         return flask.jsonify({'message': 'Invalid request'}), 400
     
@@ -60,11 +59,5 @@ def generate():
         data = db.find(body['type'], body['start_date'], body['end_date'], body['time_of_day'])
         return heatmap.get_heatmap_data(data), 200
     
-
-        
-    
-    
-
-
 if __name__ == '__main__':
     app.run(debug=True)

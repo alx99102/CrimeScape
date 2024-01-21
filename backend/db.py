@@ -43,9 +43,6 @@ def load_data(path):
                 }
 
                 dataset.append(data)
-
-                # collection.insert_one(data)
-                print(data)
         
     # insert data into collection
     collection.insert_many(dataset)
