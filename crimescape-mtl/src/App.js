@@ -53,13 +53,13 @@ function App() {
       <Header />
       <div className="main-content flex flex-1">
         <div className="control-panel w-4/5 overflow-y-auto">
-          <div className='flex flex-row'>
-            <label>
+          <div className='flex flex-row gap-12 p-6'>
+            <label className='flex flex-row items-center justify-center'>
               <Toggle
                 defaultChecked={false}
                 icons={false}
                 onChange={toggleForecast}/>
-              <span>Forecasting</span>
+              <span className='ml-2'>Forecasting</span>
             </label>
             <select name="type" onChange={onChangeEvent} ref={type}>
               <option value="car-theft">Car Theft</option>
@@ -69,9 +69,9 @@ function App() {
               <option value="armed-robbery">Armed Robbery</option>
             </select>
             {currentBody.is_prediction ? (
-                <div><input type="date" name="start-date" id="start-picker" onChange={onChangeEvent} ref={start_date} min="2024-01-18" max="2024-12-31"/>
+                <div><input className='mr-6' type="date" name="start-date" id="start-picker" onChange={onChangeEvent} ref={start_date} min="2024-01-18" max="2024-12-31"/>
                 <input type="date" name="end-date" id="end-picker" onChange={onChangeEvent} ref={end_date} min="2024-01-18" max="2024-12-31"/></div>) :          
-                (<div><input type="date" name="start-date" id="start-picker"  onChange={onChangeEvent} ref={start_date} min="2015-01-01" max="2024-01-17"/>
+                (<div><input className='mr-6' type="date" name="start-date" id="start-picker"  onChange={onChangeEvent} ref={start_date} min="2015-01-01" max="2024-01-17"/>
                 <input type="date" name="end-date" id="end-picker"  onChange={onChangeEvent} ref={end_date} min="2015-01-01" max="2024-01-17" /></div>)
             }
   

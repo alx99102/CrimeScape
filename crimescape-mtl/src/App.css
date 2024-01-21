@@ -2,6 +2,10 @@
   text-align: center;
 }
 
+body {
+  overflow-y: hidden;
+}
+
 .react-toggle {
   touch-action: pan-x;
 
