@@ -4,9 +4,10 @@ import SelectionBar from './components/SelectionBar';
 import Map from './components/Map';
 import Insights from './components/Insights';
 import './App.css'; // Ensure this file includes the CSS for Header and SelectionBar, if necessary
-
+import Toggle from 'react-toggle';
 function App() {
   
+  const [forecast, setForecast] = useState(false);
   const [componentKey, setComponentKey] = useState(1);
   let type = useRef('');
   let start_date = useRef('');
@@ -14,7 +15,7 @@ function App() {
   //let is_prediction = useRef('');
   let time_of_day = useRef('');
   let currentBody = { 
-    is_prediction: false, 
+    is_prediction: forecast, 
     type: type.current.value, 
     start_date: start_date.current.value, 
     end_date: end_date.current.value, 
@@ -23,10 +24,15 @@ function App() {
 
   function onChangeEvent(e) {
 
-    console.log(start_date);
     setComponentKey(prevKey => prevKey + 1);
 
   }
+
+  const toggleForecast = () => {
+    setForecast(!forecast)
+    console.log(forecast);
+    setComponentKey(prevKey => prevKey + 1);
+  };
 
   return (
     <div className="App flex flex-col h-screen">
@@ -34,7 +40,13 @@ function App() {
       <div className="main-content flex flex-1">
         <div className="control-panel w-4/5 overflow-y-auto">
         <div className='flex flex-row'>
-        <SelectionBar />
+        <label>
+        <Toggle
+          defaultChecked={false}
+          icons={false}
+          onChange={toggleForecast} />
+          <span>Forecasting</span>
+        </label>
           <select name="type" onChange={onChangeEvent} ref={type}>
             <option value="car-theft">Car Theft</option>
             <option value="misdemeanor">Misdemeanor</option>

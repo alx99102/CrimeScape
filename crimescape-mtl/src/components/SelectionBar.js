@@ -1,6 +1,6 @@
 import React from 'react';
 
-const SelectionBar = () => (
+const SelectionBar = ({ onChange, checked }) => (
   <div className="selection-bar">   
     <label className="relative inline-flex items-center cursor-pointer">
       <input type="checkbox" value="" className="sr-only peer" />
