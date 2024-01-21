@@ -27,7 +27,7 @@ function Map({ body }) {
 
   return (
     <div>
-      {error ? <p>{error}</p> : <MapVisual coordinatesArray={responseData} />}
+      {error ? <MapVisual /> : <MapVisual coordinatesArray={responseData} />}
     </div>
   );
 }
