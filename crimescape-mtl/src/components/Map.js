@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import axios from 'axios';
-import MapVisual from "./MapVisual";
 
 function Map({ body }) {
   // Pretend parameters are set from frontend
