@@ -49,7 +49,6 @@ function App() {
         </div>
         <div className="map-insights-container">
           <Map key={componentKey} body={currentBody} />
-          <MapVisual />
           <Insights />
         </div>
       </div>
