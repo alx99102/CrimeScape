@@ -11,7 +11,7 @@ function App() {
   let type = useRef('');
   let start_date = useRef('');
   let end_date = useRef('');
-  let is_prediction = useRef('');
+  //let is_prediction = useRef('');
   let time_of_day = useRef('');
   let currentBody = { 
     is_prediction: false, 
@@ -33,6 +33,7 @@ function App() {
       <Header />
       <div className="main-content" style={{ display: 'flex', flex: 1 }}>
         <div className="control-panel" style={{ width: '80%', overflowY: 'auto' }}>
+        <div className='flex flex-row'>
         <SelectionBar />
           <select name="type" onChange={onChangeEvent} ref={type}>
             <option value="car-theft">Car Theft</option>
@@ -48,9 +49,10 @@ function App() {
             <option value="evening">Evening</option>
             <option value="night">Night</option>
           </select>
+          </div>
           <Map key={componentKey} body={currentBody} />
         </div>
-        <div className="map-insights-container" style={{ width: '20%', overflowY: 'auto' }}>
+        <div className="map-insights-container w-1/5 overflow-y-auto">
           <Insights />
         </div>
       </div>
