@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import axios from 'axios';
+import MapVisual from "./MapVisual";
 
 function Map({ body }) {
   const [error, setError] = useState(null);

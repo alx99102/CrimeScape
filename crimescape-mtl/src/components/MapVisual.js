@@ -33,7 +33,7 @@ const MapVisual = ({ coordinatesArray }) => {
       setHeatMapData(tempHeatMap);
     }
   }, [coordinatesArray]);
-  
+
   if (loadError) return <div>Error loading maps</div>;
   if (!isLoaded) return <div>Loading maps</div>;
 
