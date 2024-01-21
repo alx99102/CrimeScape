@@ -84,6 +84,8 @@ def topCrimeInYear():
             maxLen = resultsLen
             topType = type
 
+    topType = fraToEng(topType)
+
     return "In {0}, the most common crime was {1}, with over {2} reports.".format(year, topType, maxLen)
 
 def crimeBySeason():
@@ -119,11 +121,4 @@ def crimeBySeason():
 
     seasonAverage = seasonAverage / 8
 
-
-
     return "There is an average of {0:.0f} crimes committed throughout the {1}.".format(seasonAverage, season_name)
-
-    print(start_date)
-    print(end_date)
-    topType = fraToEng(topType)
-
