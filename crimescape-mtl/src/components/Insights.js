@@ -1,10 +1,23 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
+const Insights = () => {
+  const [responseData, setResponseData] = useState({ message:"" });
+  // Get Insights from backend
+  useEffect(() => { getInsights(); }, []);
 
-const Insights = () => (
-  <div className="insights-container">
-    <h2>Insights</h2>
-    {/* Insights content */}
-  </div>
-);
+  const getInsights = async () => {
+    let response = await axios.get('http://127.0.0.1:5000/insights', {responseType: "json"})
+    setResponseData(responseData => ({...responseData, ...response.data}) )
+    console.log(response.data)
+  }
+
+
+  return (
+    <div className="insights-container">
+      <h2>Insights</h2>
+      <p>{responseData.message}</p>
+    </div>
+  )
+};
 
 export default Insights;
