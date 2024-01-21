@@ -51,7 +51,11 @@ def crimeByTime():
     type = fraToEng(type)
     analysis = {}
 
-    if cbtDayResultsLen > cbtEveningResultsLen and cbtEveningResultsLen > cbtNightResultsLen:
+    print(cbtDayResultsLen)
+    print(cbtEveningResultsLen)
+    print(cbtNightResultsLen)
+
+    if cbtDayResultsLen > cbtEveningResultsLen and cbtDayResultsLen > cbtNightResultsLen:
         # Day time is most common
         percentage = cbtDayResultsLen / (cbtDayResultsLen + cbtEveningResultsLen + cbtNightResultsLen) * 100
         analysis = "{0} most commonly occurs during the day. In fact it occurs {1:.1f}% of the time during the day.".format(type, percentage)
