@@ -65,6 +65,7 @@ https://medium.com/@nicktitt/predicting-crime-with-graph-neural-networks-ef89da9
   year={2023},
   publisher={Springer}
 }
+
 @article{hamilton2017inductive,
   title={Inductive representation learning on large graphs},
   author={Hamilton, Will and Ying, Zhitao and Leskovec, Jure},
