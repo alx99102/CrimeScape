@@ -51,10 +51,6 @@ def crimeByTime():
     type = fraToEng(type)
     analysis = {}
 
-    print(cbtDayResultsLen)
-    print(cbtEveningResultsLen)
-    print(cbtNightResultsLen)
-
     if cbtDayResultsLen > cbtEveningResultsLen and cbtDayResultsLen > cbtNightResultsLen:
         # Day time is most common
         percentage = cbtDayResultsLen / (cbtDayResultsLen + cbtEveningResultsLen + cbtNightResultsLen) * 100
@@ -70,7 +66,6 @@ def crimeByTime():
         percentage = cbtNightResultsLen / (cbtDayResultsLen + cbtEveningResultsLen + cbtNightResultsLen) * 100
         analysis = "{0} most commonly occurs during the night. In fact it occurs {1:.1f}% of the time during the night.".format(type, percentage)
         
-
     return analysis
 
 def topCrimeInYear():
@@ -89,8 +84,46 @@ def topCrimeInYear():
             maxLen = resultsLen
             topType = type
 
+    return "In {0}, the most common crime was {1}, with over {2} reports.".format(year, topType, maxLen)
+
+def crimeBySeason():
+    seasonAverage = 0
+    season = random.randint(0,3)
+    season_name = ""
+    for i in range(8):
+        match season:
+            case 0:
+                winter_start = datetime.datetime(2014+i, 12, 21).timestamp()  
+                winter_end = datetime.datetime(2015+i, 3, 19).timestamp() 
+                winterResults = db.find(None, winter_start, winter_end, None)
+                seasonAverage += len(get_data_length(winterResults)) 
+                season_name = "winter"
+            case 1:
+                spring_start = datetime.datetime(2015+i, 3, 20).timestamp()  
+                spring_end = datetime.datetime(2015+i, 6, 19).timestamp() 
+                springResults = db.find(None, spring_start, spring_end, None)
+                seasonAverage += len(get_data_length(springResults)) 
+                season_name = "spring" 
+            case 2:
+                summer_start = datetime.datetime(2015+i, 6, 20).timestamp()  
+                summer_end = datetime.datetime(2015+i, 9, 21).timestamp() 
+                summerResults = db.find(None, summer_start, summer_end, None)
+                seasonAverage += len(get_data_length(summerResults)) 
+                season_name = "summer"
+            case 3: 
+                fall_start = datetime.datetime(2015+i, 6, 22).timestamp() 
+                fall_end = datetime.datetime(2015+i, 12, 20).timestamp() 
+                fallResults = db.find(None, fall_start, fall_end, None)
+                seasonAverage += len(get_data_length(fallResults)) 
+                season_name = "fall"
+
+    seasonAverage = seasonAverage / 8
+
+
+
+    return "There is an average of {0:.0f} crimes committed throughout the {1}.".format(seasonAverage, season_name)
 
     print(start_date)
     print(end_date)
     topType = fraToEng(topType)
-    return "In {0}, the most common crime was {1}, with over {2} reports.".format(year, topType, maxLen)
+

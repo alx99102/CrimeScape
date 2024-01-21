@@ -65,7 +65,9 @@ def facts():
     analysis = {
         "crimeByTimeOfDay": insights.crimeByTime(),
     
-        "topCrimeInYear" : insights.topCrimeInYear()
+        "topCrimeInYear" : insights.topCrimeInYear(),
+
+        "crimeBySeason" : insights.crimeBySeason()
     }
     return analysis, 200
 if __name__ == '__main__':

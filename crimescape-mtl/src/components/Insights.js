@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 const Insights = () => {
-  const [responseData, setResponseData] = useState({ crimeByTimeOfDay:"",  topCrimeInYear:""});
+  const [responseData, setResponseData] = useState({ crimeByTimeOfDay:"",  topCrimeInYear:"", crimeBySeason:""});
   // Get Insights from backend
   useEffect(() => { getInsights(); }, []);
 
@@ -20,6 +20,8 @@ const Insights = () => {
         <p>{responseData.crimeByTimeOfDay}</p>
 
         <p>{responseData.topCrimeInYear}</p>
+
+        <p>{responseData.crimeBySeason}</p>
       </div>
     </div>
   )
