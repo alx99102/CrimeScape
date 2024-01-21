@@ -61,7 +61,7 @@ function Map({ body }) {
 
   function dateToUnix(date) {
     if (date != "" || date != null || date != undefined || new Date(date) != "Invalid Date") {
-      return Math.floor(new Date(date).getTime());
+      return Math.floor(new Date(date).getTime()/1000);
     }
     return false;
   }
