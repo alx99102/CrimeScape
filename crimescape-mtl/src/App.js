@@ -59,7 +59,7 @@ function App() {
                 defaultChecked={false}
                 icons={false}
                 onChange={toggleForecast}/>
-              <span className='ml-2'>Forecasting</span>
+              <span className='ml-2'>AI Forecasting</span>
             </label>
             <select name="type" onChange={onChangeEvent} ref={type}>
               <option value="car-theft">Car Theft</option>
