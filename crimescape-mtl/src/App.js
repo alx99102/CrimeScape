@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import Header from './components/Header';
 import SelectionBar from './components/SelectionBar';
 import Map from './components/Map';
@@ -22,6 +22,8 @@ function App() {
     time_of_day: time_of_day.current.value
   };
 
+
+  
   function onChangeEvent(e) {
 
     setComponentKey(prevKey => prevKey + 1);
@@ -32,6 +34,18 @@ function App() {
     setForecast(!forecast)
     console.log(forecast);
     setComponentKey(prevKey => prevKey + 1);
+    if (!forecast){
+      let start = document.getElementById("start-picker");
+      start.value = "2024-01-18"
+      let end = document.getElementById("end-picker");
+      end.value = "2024-12-31"
+    }
+    else {
+      let start = document.getElementById("start-picker");
+      start.value = "2015-01-01"
+      let end = document.getElementById("end-picker");
+      end.value = "2024-01-17"
+    }
   };
 
   return (
@@ -44,7 +58,7 @@ function App() {
               <Toggle
                 defaultChecked={false}
                 icons={false}
-                onChange={toggleForecast} />
+                onChange={toggleForecast}/>
               <span>Forecasting</span>
             </label>
             <select name="type" onChange={onChangeEvent} ref={type}>
@@ -55,10 +69,10 @@ function App() {
               <option value="armed-robbery">Armed Robbery</option>
             </select>
             {currentBody.is_prediction ? (
-                <div><input className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" type="date" name="start-date" onChange={onChangeEvent} ref={start_date} min="2024-01-18" max="2024-12-31"/>
-                <input className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" type="date" name="end-date" onChange={onChangeEvent} ref={end_date} min="2024-01-18" max="2024-12-31"/></div>) :          
-                (<div><input className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" type="date" name="start-date" onChange={onChangeEvent} ref={start_date} min="2015-01-01" max="2024-01-17"/>
-                <input className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" type="date" name="end-date" onChange={onChangeEvent} ref={end_date} min="2015-01-01" max="2024-01-17"/></div>)
+                <div><input type="date" name="start-date" id="start-picker" onChange={onChangeEvent} ref={start_date} min="2024-01-18" max="2024-12-31"/>
+                <input type="date" name="end-date" id="end-picker" onChange={onChangeEvent} ref={end_date} min="2024-01-18" max="2024-12-31"/></div>) :          
+                (<div><input type="date" name="start-date" id="start-picker"  onChange={onChangeEvent} ref={start_date} min="2015-01-01" max="2024-01-17"/>
+                <input type="date" name="end-date" id="end-picker"  onChange={onChangeEvent} ref={end_date} min="2015-01-01" max="2024-01-17" /></div>)
             }
   
 
