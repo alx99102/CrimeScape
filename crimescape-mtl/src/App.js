@@ -55,10 +55,10 @@ function App() {
               <option value="armed-robbery">Armed Robbery</option>
             </select>
             {currentBody.is_prediction ? (
-                <div><input type="date" name="start-date" onChange={onChangeEvent} ref={start_date} min="2024-01-18" max="2024-12-31"/>
-                <input type="date" name="end-date" onChange={onChangeEvent} ref={end_date} min="2024-01-18" max="2024-12-31"/></div>) :          
-                (<div><input type="date" name="start-date" onChange={onChangeEvent} ref={start_date} min="2015-01-01" max="2024-01-17"/>
-                <input type="date" name="end-date" onChange={onChangeEvent} ref={end_date} min="2015-01-01" max="2024-01-17"/></div>)
+                <div><input className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" type="date" name="start-date" onChange={onChangeEvent} ref={start_date} min="2024-01-18" max="2024-12-31"/>
+                <input className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" type="date" name="end-date" onChange={onChangeEvent} ref={end_date} min="2024-01-18" max="2024-12-31"/></div>) :          
+                (<div><input className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" type="date" name="start-date" onChange={onChangeEvent} ref={start_date} min="2015-01-01" max="2024-01-17"/>
+                <input className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" type="date" name="end-date" onChange={onChangeEvent} ref={end_date} min="2015-01-01" max="2024-01-17"/></div>)
             }
   
 
@@ -70,7 +70,7 @@ function App() {
           </div>
           <Map key={componentKey} body={currentBody} />
         </div>
-        <div className="map-insights-container w-1/5 overflow-y-auto bg-teal-800">
+        <div className="map-insights-container w-1/5 overflow-y-auto bg-blue-900">
           <Insights />
         </div>
       </div>
