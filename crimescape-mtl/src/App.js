@@ -29,10 +29,10 @@ function App() {
   }
 
   return (
-    <div className="App" style={{ display: 'flex', flexDirection: 'column', height: '100vh' }}>
+    <div className="App flex flex-col h-screen">
       <Header />
-      <div className="main-content" style={{ display: 'flex', flex: 1 }}>
-        <div className="control-panel" style={{ width: '80%', overflowY: 'auto' }}>
+      <div className="main-content flex flex-1">
+        <div className="control-panel w-4/5 overflow-y-auto">
         <div className='flex flex-row'>
         <SelectionBar />
           <select name="type" onChange={onChangeEvent} ref={type}>
@@ -52,7 +52,7 @@ function App() {
           </div>
           <Map key={componentKey} body={currentBody} />
         </div>
-        <div className="map-insights-container w-1/5 overflow-y-auto">
+        <div className="map-insights-container w-1/5 overflow-y-auto bg-teal-800">
           <Insights />
         </div>
       </div>

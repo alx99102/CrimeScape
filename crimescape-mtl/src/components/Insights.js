@@ -15,7 +15,9 @@ const Insights = () => {
   return (
     <div className="insights-container">
       <h2>Insights</h2>
-      <p>{responseData.message}</p>
+      <div className='bg-teal-700'>
+        <p>{responseData.message}</p>
+      </div>
     </div>
   )
 };
