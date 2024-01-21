@@ -5,9 +5,10 @@ import Map from './components/Map';
 import Insights from './components/Insights';
 import './App.css';
 import { useRef, useState } from 'react';
-
+import Maptest from './components/Maptest';
 
 function App() {
+  
   const [componentKey, setComponentKey] = useState(1)
   let type = useRef('');
   let start_date = useRef('');
@@ -48,6 +49,7 @@ function App() {
         </div>
         <div className="map-insights-container">
           <Map key={componentKey} body={currentBody} />
+          <Maptest />
           <Insights />
         </div>
       </div>
